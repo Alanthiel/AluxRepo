@@ -1,50 +1,20 @@
-# Copyright (c) 2010 Aldo Cortesi
-# Copyright (c) 2010, 2014 dequis
-# Copyright (c) 2012 Randall Ma
-# Copyright (c) 2012-2014 Tycho Andersen
-# Copyright (c) 2012 Craig Barnes
-# Copyright (c) 2013 horsik
-# Copyright (c) 2013 Tao Sauvage
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
-
+# -*- coding: utf-8 -*-
 import os
 import re
 import socket
 import subprocess
 
-from typing import List  # noqa: F401
-
-from libqtile import bar, layout, widget, hook
-from libqtile.config import Click, Drag, Group, Key, Screen
+from libqtile.config import KeyChord, Key, Screen, Group, Drag, Click
+from libqtile.command import lazy
+from libqtile import layout, bar, widget, hook
 from libqtile.lazy import lazy
-from libqtile.utils import guess_terminal
 
-
-mod = "mod4"
-terminal = guess_terminal()
+from typing import List  # noqa: F401
 
 mod = "mod4"                                     # Sets mod key to SUPER/WINDOWS
 myTerm = "alacritty"                             # My terminal of choice
-
 keys = [
-    # Switch between windows in current stack pane
+         #    # Switch between windows in current stack pane
     Key([mod], "k", lazy.layout.down(),                      desc="Move focus down in stack pane"),    
     Key([mod], "j", lazy.layout.up(),                        desc="Move focus up in stack pane"),
 
@@ -63,7 +33,7 @@ keys = [
     # Unsplit = 1 window displayed, like Max layout, but still with
     # multiple stack panes
     Key([mod, "shift"], "Return", lazy.layout.toggle_split(), desc="Toggle between split and unsplit sides of stack"),
-    Key([mod], "Return", lazy.spawn(terminal),                desc="Launch terminal"),
+    Key([mod], "Return", lazy.spawn(myTerm),                desc="Launch terminal"),
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(),                     desc="Toggle between layouts"),
@@ -84,22 +54,19 @@ keys = [
     Key([], "Print", lazy.spawn("gnome-screenshot")),
 ]
 
-groups = [Group(i) for i in "1234"]
+group_names = [("1", {'layout': 'monadtall'}),
+               ("2", {'layout': 'monadtall'}),
+               ("2", {'layout': 'monadtall'}),
+               ("3", {'layout': 'monadtall'}),
+               ("4", {'layout': 'monadtall'}),
+               ("5", {'layout': 'monadtall'})]
 
-for i in groups:
-    keys.extend([
-        # mod1 + letter of group = switch to group
-        Key([mod], i.name, lazy.group[i.name].toscreen(),
-            desc="Switch to group {}".format(i.name)),
+groups = [Group(name, **kwargs) for name, kwargs in group_names]
 
-        # mod1 + shift + letter of group = switch to & move focused window to group
-        Key([mod, "shift"], i.name, lazy.window.togroup(i.name, switch_group=True),
-            desc="Switch to & move focused window to group {}".format(i.name)),
-        # Or, use below if you prefer not to switch to that group.
-        # # mod1 + shift + letter of group = move focused window to group
-        # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
-        #     desc="move focused window to group {}".format(i.name)),
-    ])
+for i, (name, kwargs) in enumerate(group_names, 1):
+    keys.append(Key([mod], str(i), lazy.group[name].toscreen()))        # Switch to another group
+    keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(name))) # Send current window to another group
+
 
 layout_theme = {"border_width": 2,
                 "margin": 3,
@@ -135,17 +102,21 @@ colors = [["#0C0D12", "#0C0D12"], # panel background
           ["#271C0D", "#271C0D"], # color for the even widgets
           ["#e1acff", "#e1acff"]] # window name '''
 
-prompt = "run:"
+
+prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
+
+##### DEFAULT WIDGET SETTINGS #####
 widget_defaults = dict(
-    font="Mononoki Nerd Font",
-    fontsize = 11,
+    font="Ubuntu Mono",
+    fontsize = 12,
     padding = 2,
     background=colors[2]
 )
 extension_defaults = widget_defaults.copy()
 
-widgets_list = [
-            widget.Sep(
+def init_widgets_list():
+    widgets_list = [
+              widget.Sep(
                     linewidth = 0,
                     padding = 6,
                     foreground = colors[2],
@@ -281,15 +252,54 @@ widgets_list = [
                     background = colors[0],
                     padding = 5
                     ),
-            ]
+              ]
+    return widgets_list
 
-screens = [
-    Screen(
-        bottom=bar.Bar(widgets=widgets_list, opacity=0.9, size=30),
-    ),
-]
+def init_widgets_screen1():
+    widgets_screen1 = init_widgets_list()
+    return widgets_screen1                       # Slicing removes unwanted widgets on Monitors 1,3
 
-# Drag floating layouts.
+def init_widgets_screen2():
+    widgets_screen2 = init_widgets_list()
+    return widgets_screen2                       # Monitor 2 will display all widgets in widgets_list
+
+def init_screens():
+    return [Screen(bottom=bar.Bar(widgets=init_widgets_screen1(), opacity=1.0, size=30)),
+            Screen(bottom=bar.Bar(widgets=init_widgets_screen2(), opacity=1.0, size=30))]
+
+if __name__ in ["config", "__main__"]:
+    screens = init_screens()
+    widgets_list = init_widgets_list()
+    widgets_screen1 = init_widgets_screen1()
+    widgets_screen2 = init_widgets_screen2()
+
+def window_to_prev_group(qtile):
+    if qtile.currentWindow is not None:
+        i = qtile.groups.index(qtile.currentGroup)
+        qtile.currentWindow.togroup(qtile.groups[i - 1].name)
+
+def window_to_next_group(qtile):
+    if qtile.currentWindow is not None:
+        i = qtile.groups.index(qtile.currentGroup)
+        qtile.currentWindow.togroup(qtile.groups[i + 1].name)
+
+def window_to_previous_screen(qtile):
+    i = qtile.screens.index(qtile.current_screen)
+    if i != 0:
+        group = qtile.screens[i - 1].group.name
+        qtile.current_window.togroup(group)
+
+def window_to_next_screen(qtile):
+    i = qtile.screens.index(qtile.current_screen)
+    if i + 1 != len(qtile.screens):
+        group = qtile.screens[i + 1].group.name
+        qtile.current_window.togroup(group)
+
+def switch_screens(qtile):
+    i = qtile.screens.index(qtile.current_screen)
+    group = qtile.screens[i - 1].group
+    qtile.current_screen.set_group(group)
+
 mouse = [
     Drag([mod], "Button1", lazy.window.set_position_floating(),
          start=lazy.window.get_position()),
@@ -300,12 +310,12 @@ mouse = [
 
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: List
-main = None  # WARNING: this is deprecated and will be removed soon
+main = None
 follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
+
 floating_layout = layout.Floating(float_rules=[
-    # Run the utility of `xprop` to see the wm class and name of an X client.
     {'wmclass': 'confirm'},
     {'wmclass': 'dialog'},
     {'wmclass': 'download'},
@@ -324,10 +334,10 @@ floating_layout = layout.Floating(float_rules=[
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 
-#@hook.subscribe.startup_once
-#def start_once():
-#    home = os.path.expanduser('~')
-#    subprocess.call([home + '/.config/qtile/autostart.sh'])
+@hook.subscribe.startup_once
+def autostart():
+    home = os.path.expanduser('~/.config/qtile/autostart.sh')
+    subprocess.call([home])
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the
@@ -338,16 +348,3 @@ focus_on_window_activation = "smart"
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
-
-@hook.subscribe.startup_once
-def autostart():
-    home = os.path.expanduser('~/.config/qtile/autostart.sh')
-    subprocess.call([home])
-
-@hook.subscribe.client_new
-def floating_dialogs(window):
-    dialog = window.window.get_wm_type() == 'dialog'
-    transient = window.window.get_wm_transient_for()
-    if dialog or transient:
-        window.floating = True
-        
