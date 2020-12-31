@@ -45,6 +45,7 @@ keys = [
         # Lazy Spawn
         Key([mod, "control"], "Return", lazy.spawn("bash /home/alux/.config/qtile/rofi-apps"),desc='Rofi Run Launcher'),
         Key([mod], "Return", lazy.spawn(myTerm),                        desc="Launch terminal"),
+        Key([mod], "r", lazy.spawncmd(),                                desc="Launch run"),
 
         # Personal KeyBindings
 
@@ -55,7 +56,7 @@ keys = [
         Key([], "Print", lazy.spawn("gnome-screenshot")),
 ]
 
-groups = [Group(i) for i in "12345"]
+groups = [Group(i) for i in "123450"]
 
 for i in groups:
         keys.extend([
@@ -64,17 +65,19 @@ for i in groups:
                         # mod1 + shift + letter of group = switch to & move focused window to group
                 Key([mod, "shift"], i.name, lazy.window.togroup(i.name, switch_group=True),
                 desc="Switch to & move focused window to group {}".format(i.name)),
+                Key([mod, "control"], i.name, lazy.window.togroup(i.name, switch_group=False),
+                desc="Switch to & move focused window to group {}".format(i.name)),
         ])
 
 layout_theme = {"border_width": 2,
-                "margin": 3,
+                "margin": 2,
                 "border_focus": "55eedd",
                 "border_normal": "30004a"
                 }
 
 layouts = [
         layout.Max(),
-        layout.Stack(num_stacks=2,margin=2, border_width=1, border_focus="55eedd",border_normal= "30004a" ),
+        layout.Stack(num_stacks=2,margin=1, border_width=1, border_focus="55eedd",border_normal= "30004a" ),
         layout.MonadTall(**layout_theme),
         layout.Max(**layout_theme),
         layout.Tile(shift_windows=True, **layout_theme),
@@ -102,7 +105,7 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
-def init_widgets_list():
+def init_widgets_list(face='wlp0s20f0u13'):
         widgets_list = [
                 widget.Sep(
                         linewidth = 0,
@@ -172,7 +175,7 @@ def init_widgets_list():
                         padding = 5
                         ),
                 widget.Net(
-                        interface = "wlo1",
+                        interface = face,
                         format = '{down} ↓↑ {up}',
                         foreground = colors[2],
                         background = colors[5],
@@ -206,43 +209,28 @@ def init_widgets_list():
                         foreground = colors[2],
                         background = colors[5]
                         ),
-                widget.TextBox(
-                        text = " Battery:",
-                        foreground = colors[2],
-                        background = colors[4],
-                        padding = 0
-                        ),                        
-                widget.Battery(
-                        charge_char = 'C: ',
-                        discharge_char = 'D: ',
-                        empty_char = 'Empty',
-                        format = '{char} {percent:2.0%}',
-                        foreground = colors[2],
-                        background = colors[4],
-                        padding = 5
-                        ),
                 widget.CurrentLayoutIcon(
-                        custom_icon_paths = [os.path.expanduser("~/.config/qtile/icons")],
+                        #custom_icon_paths = [os.path.expanduser("~/.config/qtile/icons")],
                         foreground = colors[0],
-                        background = colors[5],
+                        background = colors[4],
                         padding = 0,
                         scale = 0.5
                         ),
                 widget.CurrentLayout(
                         foreground = colors[2],
-                        background = colors[5],
+                        background = colors[4],
                         padding = 5
                         ),
                 widget.Clock(
                         foreground = colors[2],
-                        background = colors[4],
+                        background = colors[5],
                         format = "%A, %B %d  [ %H:%M ]"
                         ),
                 widget.Sep(
                         linewidth = 0,
                         padding = 10,
                         foreground = colors[0],
-                        background = colors[4]
+                        background = colors[5]
                         ),
                 widget.Systray(
                         background = colors[0],
@@ -255,7 +243,7 @@ def init_widgets_screen1():
         widgets_screen1 = init_widgets_list()
         return widgets_screen1                       # Slicing removes unwanted widgets on Monitors 1,3
 
-def init_widgets_screen2():
+def init_widgets_screen2(face='enp0s20f0u6'):
         widgets_screen2 = init_widgets_list()
         return widgets_screen2                       # Monitor 2 will display all widgets in widgets_list
 
