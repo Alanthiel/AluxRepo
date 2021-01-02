@@ -32,8 +32,9 @@ keys = [
 
         # Switch window focus to other pane(s) of stack
         Key([mod], "space", lazy.layout.next(),                         desc="Switch window focus to other pane(s) of stack"),
-
         Key([mod], "Tab", lazy.next_layout(),                           desc="Toggle between layouts"),
+        Key([mod], "d", lazy.to_screen(0),                              desc='Switch Focus to Screen 0'),
+        Key([mod], "e", lazy.to_screen(1),                              desc='Switch Focus to Screen 1'),
         
 
         # Lazy Boot
