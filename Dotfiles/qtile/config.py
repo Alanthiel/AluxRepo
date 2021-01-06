@@ -52,8 +52,8 @@ keys = [
 
         Key([mod, "control"], 'w', lazy.spawn('env XSECURELOCK_PASSWORD_PROMPT=asterisks xsecurelock')),
         Key([mod, "control"], 'x', lazy.hide_show_bar("bottom")),
-        Key([mod, "shift"], "KP_Add", lazy.spawn("amixer -c 0 -q set Master 1dB+")),
-        Key([mod, "shift"], "KP_Subtract", lazy.spawn("amixer -c 0 -q set Master 1dB-")),
+        Key([mod, "shift"], "KP_Add", lazy.spawn("amixer -D pulse sset Master 2%+")),
+        Key([mod, "shift"], "KP_Subtract", lazy.spawn("amixer -D pulse sset Master 2%-")),
         Key([], "Print", lazy.spawn("gnome-screenshot")),
 ]
 
@@ -106,7 +106,7 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
-def init_widgets_list(face='wlp0s20f0u13'):
+def init_widgets_list(face='enp0s20f0u6'):
         widgets_list = [
                 widget.Sep(
                         linewidth = 0,

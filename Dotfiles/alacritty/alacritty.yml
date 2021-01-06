@@ -218,7 +218,7 @@ font:
 colors:
    # Default colors
   primary:
-     background: '#00030a'
+     background: '#0a0f12'
      foreground: '#acb4c2'
 
   cursor:

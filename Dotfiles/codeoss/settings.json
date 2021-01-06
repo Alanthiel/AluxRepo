@@ -1,0 +1,11 @@
+{
+    "workbench.colorTheme": "Ayu Dark Bordered",
+    "window.menuBarVisibility": "toggle",
+    "workbench.sideBar.location": "right",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    "python.condaPath": "/home/alux/anaconda3/bin/python",
+    "python.pythonPath": "/home/alux/anaconda3/bin/python",
+    "kite.showWelcomeNotificationOnStartup": false,
+    "terminal.integrated.inheritEnv": false
+}

@@ -18,7 +18,7 @@ alias ..="cd .."
 set logloc "/mnt/InSpace/Systemd/Logging and Rollback"
 set backloc "/mnt/InSpace/Systemd/Working Backups/"
 set buildbin "/mnt/InSpace/Systemd/build/bin"
-
+set config "/home/alux/AluxRepo/Dotfiles/fish/config.fish"
 
 set EDITOR 'vim'
 
@@ -26,6 +26,14 @@ function restart_wifi
     wifi off
     wifi on
 end
+
+function update_git
+	cd ~alux/AluxRepo
+	git add .
+	git commit
+	git push -u origin master
+end
+
 # <<< personal settings
 
 
