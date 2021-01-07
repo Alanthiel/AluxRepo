@@ -59,5 +59,6 @@ Plug 'preservim/nerdtree' |
 	\ Plug 'Xuyuanp/nerdtree-git-plugin' |
 	\ Plug 'ryanoasis/vim-devicons'
 Plug 'vim-python/python-syntax'
+Plug 'wfxr/minimap.vim'
 Plug 'dag/vim-fish'
 call plug#end()

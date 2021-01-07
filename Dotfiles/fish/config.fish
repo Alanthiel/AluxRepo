@@ -34,6 +34,10 @@ function update_git
 	git push -u origin master
 end
 
+function unload_droid_audio
+	pactl unload-module (pactl list short modules | grep 'module-alsa-source' | awk '{print $1}')
+end
+
 # <<< personal settings
 
 
