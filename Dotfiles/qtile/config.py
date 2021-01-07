@@ -106,7 +106,7 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
-def init_widgets_list(face='enp0s20f0u6'):
+def init_widgets_list(face='enp0s31f6'):
         widgets_list = [
                 widget.Sep(
                         linewidth = 0,
