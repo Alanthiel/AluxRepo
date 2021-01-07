@@ -51,6 +51,8 @@ syntax on
 set nu
 set hlsearch
 
+colorscheme koehler
+
 let g:NERDTreeWinPos = "right"
 let g:python_highlight_all = 1 
 

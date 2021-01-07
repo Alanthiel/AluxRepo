@@ -12,12 +12,12 @@ from libqtile.lazy import lazy
 from typing import List  # noqa: F401
 
 mod = "mod4"                                     # Sets mod key to SUPER/WINDOWS
-myTerm = "alacritty" 
+myTerm = "alacritty"
 
 keys = [
 
         # Switch between windows in current stack pane
-        Key([mod], "k", lazy.layout.down(),                             desc="Move focus down in stack pane"),    
+        Key([mod], "k", lazy.layout.down(),                             desc="Move focus down in stack pane"),
         Key([mod], "j", lazy.layout.up(),                               desc="Move focus up in stack pane"),
         Key([mod, "shift"], "Return", lazy.layout.toggle_split(),       desc="Toggle between split and unsplit sides of stack"),
         Key([mod, 'shift'], 'space', lazy.layout.flip()),
@@ -25,7 +25,7 @@ keys = [
 
         # Swap panes of split stack
         Key([mod, "shift"], "space", lazy.layout.rotate(),              desc="Swap panes of split stack"),
-        
+
         # Move windows up or down in current stack for Monad Tall Layout
         Key([mod, "control"], "k", lazy.layout.shuffle_down(),          desc="Move window down in current stack "),
         Key([mod, "control"], "j", lazy.layout.shuffle_up(),            desc="Move window up in current stack "),
@@ -35,7 +35,7 @@ keys = [
         Key([mod], "Tab", lazy.next_layout(),                           desc="Toggle between layouts"),
         Key([mod], "d", lazy.to_screen(0),                              desc='Switch Focus to Screen 0'),
         Key([mod], "e", lazy.to_screen(1),                              desc='Switch Focus to Screen 1'),
-        
+
 
         # Lazy Boot
         Key([mod, "control"], "r", lazy.restart(),                      desc="Restart qtile"),
