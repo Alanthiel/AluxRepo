@@ -38,6 +38,4 @@ function unload_droid_audio
 	pactl unload-module (pactl list short modules | grep 'module-alsa-source' | awk '{print $1}')
 end
 
-# <<< personal settings
-
-
+# <<< personal settings <<<
