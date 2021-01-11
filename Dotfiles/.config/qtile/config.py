@@ -22,7 +22,6 @@ keys = [
         Key([mod, "shift"], "Return", lazy.layout.toggle_split(),       desc="Toggle between split and unsplit sides of stack"),
         Key([mod, 'shift'], 'space', lazy.layout.flip()),
 
-
         # Swap panes of split stack
         Key([mod, "shift"], "space", lazy.layout.rotate(),              desc="Swap panes of split stack"),
 

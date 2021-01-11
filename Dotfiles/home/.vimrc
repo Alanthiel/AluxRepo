@@ -53,6 +53,9 @@ set hlsearch
 
 colorscheme koehler
 
+nnoremap <silent> <expr> <C-N> g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(expand('%')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>"
+
+
 let g:NERDTreeWinPos = "right"
 let g:python_highlight_all = 1 
 
