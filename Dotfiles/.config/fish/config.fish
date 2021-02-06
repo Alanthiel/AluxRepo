@@ -90,6 +90,7 @@ end
 
 alias check="cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor"
 alias apply="sudo cpupower frequency-set -g"
+alias reset_mps='rm .config/mps-youtube/cache_py_3.9.1'
 alias load_droid_audio="pacmd load-module module-alsa-source device=hw:0,1,0"
 alias enter_build="cd /mnt/InSpace/Systemd/build"
 alias enter_systemd="cd /mnt/InSpace/Systemd"
