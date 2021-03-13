@@ -8,11 +8,25 @@ from libqtile.config import KeyChord, Key, Screen, Group, Drag, Click
 from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook
 from libqtile.lazy import lazy
+from libqtile import qtile
+
 
 from typing import List  # noqa: F401
 
 mod = "mod4"                                     # Sets mod key to SUPER/WINDOWS
 myTerm = "alacritty"
+
+def htop():
+	qtile.cmd_spawn(myTerm + ' -e htop')
+
+def sys_mon():
+    qtile.cmd_spawn(myTerm + ' -e gnome-system-monitor')
+
+def vol_tog():
+    qtile.cmd_spawn('amixer set Master toggle')
+
+def open_rofi():
+    qtile.cmd_spawn('bash /home/alux/.config/qtile/rofi-apps')
 
 keys = [
 
@@ -116,7 +130,7 @@ def init_widgets_list(face='enp0s31f6'):
                 widget.Image(
                         filename = "~/.config/qtile/icons/ico.png",
                         padding = 6,
-                        mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn('bash /home/alux/.config/qtile/rofi-apps')}
+                        mouse_callbacks = {'Button1': open_rofi}
                         ),
                 widget.GroupBox(
                         font = "Ubuntu Bold",
@@ -171,7 +185,7 @@ def init_widgets_list(face='enp0s31f6'):
                 widget.Memory(
                         foreground = colors[2],
                         background = colors[4],
-                        mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn(myTerm + ' -e htop')},
+                        mouse_callbacks = {'Button1': htop},
                         padding = 5
                         ),
                 widget.Net(
@@ -179,7 +193,7 @@ def init_widgets_list(face='enp0s31f6'):
                         format = '{down} ↓↑ {up}',
                         foreground = colors[2],
                         background = colors[5],
-                        mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn(myTerm + ' -e gnome-system-monitor')},
+                        mouse_callbacks = {'Button1': sys_mon},
                         padding = 5
                         ),
                 widget.TextBox(
@@ -189,15 +203,9 @@ def init_widgets_list(face='enp0s31f6'):
                         background = colors[4],
                         fontsize = 14
                         ),
-                widget.Pacman(
-                        update_interval = 1800,
-                        foreground = colors[2],
-                        mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn(myTerm + ' -e sudo pacman -Syyu')},
-                        background = colors[4]
-                        ),
                 widget.TextBox(
                         text = " Vol:",
-                        mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn('amixer -c 0 -q set Master toggle')},
+                        mouse_callbacks = {'Button1': vol_tog},
                         padding = 2,
                         foreground = colors[2],
                         background = colors[5],
@@ -205,7 +213,7 @@ def init_widgets_list(face='enp0s31f6'):
                         ),
                 widget.Volume(
                         padding = 5,
-                        mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn('amixer -c 0 -q set Master toggle')},
+                        mouse_callbacks = {'Button1': vol_tog},
                         foreground = colors[2],
                         background = colors[5]
                         ),
