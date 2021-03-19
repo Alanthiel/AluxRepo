@@ -1,2 +1,4 @@
 /scripts/Colab_Kaggle_Intregration/kaggle.json
 /.gitignore
+/Dotfiles/.config/qtile/__pycache__/**
+/Dotfiles/.config/qtile/nohup.out

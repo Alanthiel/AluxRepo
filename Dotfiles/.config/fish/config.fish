@@ -103,6 +103,7 @@ set logloc "/mnt/InSpace/Systemd/Logging and Rollback"
 set backloc "/mnt/InSpace/Systemd/Working Backups/"
 set buildbin "/mnt/InSpace/Systemd/build/bin"
 set config "/home/alux/AluxRepo/Dotfiles/.config/fish/config.fish"
+set qconfig "/home/alux/AluxRepo/Dotfiles/.config/qtile/config.py"
 
 set EDITOR 'vim'
 

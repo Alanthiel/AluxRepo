@@ -28,6 +28,9 @@ def vol_tog():
 def open_rofi():
     qtile.cmd_spawn('bash /home/alux/.config/qtile/rofi-apps')
 
+def upd():
+    qtile.cmd_spawn(myTerm + ' -e sudo pacman -Syyuu')
+
 keys = [
 
         # Switch between windows in current stack pane
@@ -46,8 +49,8 @@ keys = [
         # Switch window focus to other pane(s) of stack
         Key([mod], "space", lazy.layout.next(),                         desc="Switch window focus to other pane(s) of stack"),
         Key([mod], "Tab", lazy.next_layout(),                           desc="Toggle between layouts"),
-        Key([mod], "d", lazy.to_screen(0),                              desc='Switch Focus to Screen 0'),
-        Key([mod], "e", lazy.to_screen(1),                              desc='Switch Focus to Screen 1'),
+        Key([mod], "e", lazy.to_screen(0),                              desc='Switch Focus to Screen 0'),
+        Key([mod], "d", lazy.to_screen(1),                              desc='Switch Focus to Screen 1'),
 
 
         # Lazy Boot
@@ -170,6 +173,10 @@ def init_widgets_list(face='enp0s31f6'):
                         background = colors[0],
                         padding = 0
                         ),
+                widget.CPU(
+                        background = colors[4],
+                        foreground = colors[2]
+                        ),
                 widget.CPUGraph(
                         linewidth = 0,
                         padding = 6,
@@ -201,7 +208,18 @@ def init_widgets_list(face='enp0s31f6'):
                         padding = 2,
                         foreground = colors[2],
                         background = colors[4],
+                        mouse_callbacks = {'Button1': upd},
                         fontsize = 14
+                        ),
+                widget.CheckUpdates(
+                        padding = 6,
+                        distro='Arch',
+                        mouse_callbacks = {'Button1':upd},
+                        excute='sudo pacman -Syyuu',
+                        update_interval = 1800,
+                        no_update_string = 'N/A',
+                        foreground = colors[2],
+                        background = colors[4]
                         ),
                 widget.TextBox(
                         text = " Vol:",
@@ -218,7 +236,6 @@ def init_widgets_list(face='enp0s31f6'):
                         background = colors[5]
                         ),
                 widget.CurrentLayoutIcon(
-                        #custom_icon_paths = [os.path.expanduser("~/.config/qtile/icons")],
                         foreground = colors[0],
                         background = colors[4],
                         padding = 0,
@@ -307,22 +324,6 @@ follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
 
-floating_layout = layout.Floating(float_rules=[
-        {'wmclass': 'confirm'},
-        {'wmclass': 'dialog'},
-        {'wmclass': 'download'},
-        {'wmclass': 'error'},
-        {'wmclass': 'file_progress'},
-        {'wmclass': 'notification'},
-        {'wmclass': 'splash'},
-        {'wmclass': 'toolbar'},
-        {'wmclass': 'confirmreset'},  # gitk
-        {'wmclass': 'makebranch'},  # gitk
-        {'wmclass': 'maketag'},  # gitk
-        {'wname': 'branchdialog'},  # gitk
-        {'wname': 'pinentry'},  # GPG key password entry
-        {'wmclass': 'ssh-askpass'},  # ssh-askpass
-])
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 
