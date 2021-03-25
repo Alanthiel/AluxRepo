@@ -177,12 +177,12 @@ def init_widgets_list(face='enp0s31f6'):
                         background = colors[4],
                         foreground = colors[2]
                         ),
-                widget.CPUGraph(
-                        linewidth = 0,
-                        padding = 6,
-                        fill_color = colors[2],
-                        background = colors[5],
-                ),
+#                widget.CPUGraph(
+#                        linewidth = 0,
+#                        padding = 6,
+#                        fill_color = colors[2],
+#                        background = colors[5],
+#                ),
                 widget.ThermalSensor(
                         foreground = colors[2],
                         background = colors[5],
