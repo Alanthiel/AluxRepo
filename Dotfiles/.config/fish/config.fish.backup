@@ -129,6 +129,3 @@ function unload_droid_audio
 end
 
 # <<< personal settings <<<
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/mnt/InSpace/Systemd/build/google-cloud-sdk/path.fish.inc' ]; . '/mnt/InSpace/Systemd/build/google-cloud-sdk/path.fish.inc'; end
