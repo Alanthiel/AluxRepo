@@ -56,6 +56,9 @@ colorscheme koehler
 nnoremap <silent> <expr> <C-N> g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(expand('%')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>"
 
 
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+
 let g:NERDTreeWinPos = "right"
 let g:python_highlight_all = 1 
 
