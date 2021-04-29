@@ -88,16 +88,21 @@ end
 # <<< Shashimi Prompt <<< 
 
 
-alias check="cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor"
-alias apply="sudo cpupower frequency-set -g"
-alias reset_mps='rm .config/mps-youtube/cache_py_3.9.1'
-alias load_droid_audio="pacmd load-module module-alsa-source device=hw:0,1,0"
 alias enter_build="cd /mnt/InSpace/Systemd/build"
 alias enter_systemd="cd /mnt/InSpace/Systemd"
 alias enter_adb="cd /mnt/InSpace/Systemd/build/android/"
+
+alias check="cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor"
+alias apply="sudo cpupower frequency-set -g"
+
+alias reset_mps='rm .config/mps-youtube/cache_py_3.9.1'
+alias load_droid_audio="pacmd load-module module-alsa-source device=hw:0,1,0"
 alias ping="ping -c 5 "
 alias ..="cd .."
-alias work="nohup teams ; prospect-mail"
+
+alias ls="exa"
+alias la="exa -la"
+alias ll="exa -l"
 
 set workdir "/mnt/InSpace/Systemd/"
 set logloc "/mnt/InSpace/Systemd/Logging and Rollback"
@@ -106,6 +111,7 @@ set buildbin "/mnt/InSpace/Systemd/build/bin"
 set config "/home/alux/AluxRepo/Dotfiles/.config/fish/config.fish"
 set qconfig "/home/alux/AluxRepo/Dotfiles/.config/qtile/config.py"
 
+export SAM_CLI_TELEMETRY=0
 set EDITOR 'vim'
 
 function restart_wifi

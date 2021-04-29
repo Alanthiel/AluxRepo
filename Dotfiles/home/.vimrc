@@ -57,7 +57,7 @@ nnoremap <silent> <expr> <C-N> g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : buf
 
 
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-
+command Nerdtree NERDTree
 
 let g:NERDTreeWinPos = "right"
 let g:python_highlight_all = 1 
