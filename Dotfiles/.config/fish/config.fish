@@ -100,6 +100,9 @@ alias load_droid_audio="pacmd load-module module-alsa-source device=hw:0,1,0"
 alias ping="ping -c 5 "
 alias ..="cd .."
 
+alias cat="bat"
+
+alias tree="exa --tree --icons"
 alias ls="exa"
 alias la="exa -la"
 alias ll="exa -l"

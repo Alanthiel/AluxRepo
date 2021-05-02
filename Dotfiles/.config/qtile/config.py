@@ -66,6 +66,7 @@ keys = [
 
         # Personal KeyBindings
 
+        Key([mod, "control"], 'p', lazy.spawn('clipmenu')),
         Key([mod, "control"], 'w', lazy.spawn('env XSECURELOCK_PASSWORD_PROMPT=asterisks xsecurelock')),
         Key([mod, "control"], 'x', lazy.hide_show_bar("bottom")),
         Key([mod, "shift"], "KP_Add", lazy.spawn("amixer -D pulse sset Master 2%+")),
@@ -177,12 +178,6 @@ def init_widgets_list(face='enp0s31f6'):
                         background = colors[4],
                         foreground = colors[2]
                         ),
-#                widget.CPUGraph(
-#                        linewidth = 0,
-#                        padding = 6,
-#                        fill_color = colors[2],
-#                        background = colors[5],
-#                ),
                 widget.ThermalSensor(
                         foreground = colors[2],
                         background = colors[5],
