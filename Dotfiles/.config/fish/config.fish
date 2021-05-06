@@ -95,10 +95,11 @@ alias enter_adb="cd /mnt/InSpace/Systemd/build/android/"
 alias check="cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor"
 alias apply="sudo cpupower frequency-set -g"
 
-alias reset_mps='rm .config/mps-youtube/cache_py_3.9.1'
+alias reset_mps='rm ~/.config/mps-youtube/cache_py*'
 alias load_droid_audio="pacmd load-module module-alsa-source device=hw:0,1,0"
 alias ping="ping -c 5 "
 alias ..="cd .."
+alias grep="grep --color=always"
 
 alias cat="bat"
 
@@ -123,10 +124,20 @@ function restart_wifi
 end
 
 function update_git
+	set path (pwd)
 	cd ~alux/AluxRepo
 	git add .
 	git commit
 	git push -u origin master
+	cd $path
+end
+
+function set-inpl
+  /home/alux/.config/inpl/set.py $argv
+end
+
+function __fish_command_not_found_handler --on-event fish_command_not_found
+    __fish_default_command_not_found_handler $argv[1]
 end
 
 function visplay
