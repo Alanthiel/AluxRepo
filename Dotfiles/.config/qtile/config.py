@@ -63,6 +63,8 @@ keys = [
         Key([mod, "control"], "Return", lazy.spawn("bash /home/alux/.config/qtile/rofi-apps"),desc='Rofi Run Launcher'),
         Key([mod], "Return", lazy.spawn(myTerm),                        desc="Launch terminal"),
         Key([mod], "r", lazy.spawncmd(),                                desc="Launch run"),
+        Key([], 'XF86Mail', lazy.spawn('prospect-mail'),           desc="Launch terminal"),
+        Key([], 'XF86Calculator', lazy.spawn('teams-insiders'),           desc="Launch terminal"),
 
         # Personal KeyBindings
 
