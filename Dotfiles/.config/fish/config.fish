@@ -109,9 +109,11 @@ alias la="exa -la"
 alias ll="exa -l"
 
 set workdir "/mnt/InSpace/Systemd/"
-set logloc "/mnt/InSpace/Systemd/Logging and Rollback"
-set backloc "/mnt/InSpace/Systemd/Working Backups/"
-set buildbin "/mnt/InSpace/Systemd/build/bin"
+set logloc $workdir"Logging and Rollback"
+set backloc $workdir"Working Backups/"
+set buildbin $workdir"build/bin"
+set playground $workdir"Workbench/playground"
+
 set config "/home/alux/AluxRepo/Dotfiles/.config/fish/config.fish"
 set qconfig "/home/alux/AluxRepo/Dotfiles/.config/qtile/config.py"
 

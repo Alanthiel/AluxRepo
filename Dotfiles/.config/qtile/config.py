@@ -55,7 +55,7 @@ keys = [
 
         # Lazy Boot
         Key([mod, "control"], "r", lazy.restart(),                      desc="Restart qtile"),
-        Key([mod, "control"], "q", lazy.shutdown(),                     desc="Shutdown qtile"),
+        Key([mod, "control"], "Escape", lazy.shutdown(),                     desc="Shutdown qtile"),
         Key([mod], "w", lazy.window.kill(),                             desc="Kill focused window"),
 
 
@@ -65,6 +65,8 @@ keys = [
         Key([mod], "r", lazy.spawncmd(),                                desc="Launch run"),
         Key([], 'XF86Mail', lazy.spawn('prospect-mail'),           desc="Launch terminal"),
         Key([], 'XF86Calculator', lazy.spawn('teams-insiders'),           desc="Launch terminal"),
+        Key([], 'XF86Tools', lazy.spawn('alacritty -e bash /home/alux/.config/qtile/msp.sh'),           desc="Launch terminal"),
+        Key([], 'XF86AudioMute', lazy.spawn('amixer set Master toggle'),           desc="Launch terminal"),
 
         # Personal KeyBindings
 
