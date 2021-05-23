@@ -108,6 +108,8 @@ alias ls="exa"
 alias la="exa -la"
 alias ll="exa -l"
 
+alias jloc='curl https://json.geoiplookup.io/(curl https://ipinfo.io/ip) | jq'
+
 set workdir "/mnt/InSpace/Systemd/"
 set logloc $workdir"Logging and Rollback"
 set backloc $workdir"Working Backups/"
