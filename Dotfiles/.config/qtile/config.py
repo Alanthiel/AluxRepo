@@ -71,7 +71,7 @@ keys = [
         # Personal KeyBindings
 
         Key([mod, "control"], 'p', lazy.spawn('clipmenu')),
-        Key([mod], 'Escape', lazy.spawn('env XSECURELOCK_PASSWORD_PROMPT=asterisks xsecurelock')),
+        Key([mod], 'Escape', lazy.spawn('bash /home/alux/.config/qtile/xss.sh')),
         Key([mod, "control"], 'x', lazy.hide_show_bar("bottom")),
         Key([mod, "control"], "KP_Multiply", lazy.spawn("amixer -D pulse sset Master 2%+")),
         Key([mod, "control"], "KP_Divide", lazy.spawn("amixer -D pulse sset Master 2%-")),

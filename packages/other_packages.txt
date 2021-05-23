@@ -1,0 +1,7 @@
+andorid-studio
+android-sdk
+android-tools
+intellij
+tableplus
+krita
+lutris

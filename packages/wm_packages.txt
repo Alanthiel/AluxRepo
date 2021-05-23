@@ -1,0 +1,15 @@
+qtile
+xsecurelock
+dunst
+alacritty
+picom
+rofi
+dmenu
+timeshift
+polkit-gnome
+nitrogen
+clipmenu
+vim
+seahorse
+fish
+manjaro-gnome-settings
