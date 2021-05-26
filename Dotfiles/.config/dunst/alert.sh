@@ -1,2 +1,2 @@
 #!/bin/bash
-paplay ~/.config/dunst/magicwand.wav
+paplay ~/.config/dunst/openup.wav
