@@ -7,7 +7,7 @@ read query
 query=${query,,}
 if [[ $query = 'y' || $query = 'yes' ]]
 then
-	echo -e "\n\033[1;32m::\033[1;35m Starting Post Commit -> Upstream Push \n" 
+	echo -e "\n\033[1;32m::\033[1;35m Starting Post Commit -> Upstream Push \033[1;34m\n" 
        	git push -u origin main
 fi
 
