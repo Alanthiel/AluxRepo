@@ -1,0 +1,9 @@
+#!/bin/bash
+echo -en "\n\033[0;32m::\033[0m Push to Upstream? y/[n]: "
+read query
+query=${query,,}
+if [[ $query = 'y' || $query = 'yes' ]]
+then
+	echo -e "\n\033[1;32m::\033[1;35m Starting Post Commit -> Upstream Push \n" 
+       	git push -u origin main
+fi
