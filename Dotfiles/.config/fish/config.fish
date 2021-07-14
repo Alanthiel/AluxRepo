@@ -44,9 +44,9 @@ set EDITOR 'vim'
 
 set SPACEFISH_CONDA_SHOW false 
 set SPACEFISH_EXIT_CODE_SHOW true
-set SPACEFISH_DIR_TRUNC 1
+set SPACEFISH_DIR_TRUNC 2
 set SPACEFISH_USER_SHOW true
-set SPACEFISH_PROMPT_SEPARATE_LINE false
+
 
 function restart_wifi
     wifi off
