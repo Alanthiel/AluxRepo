@@ -22,3 +22,8 @@ openssh
 paru
 udisks2
 fish
+7z
+gnupg
+foremost
+testdisk
+ncdu

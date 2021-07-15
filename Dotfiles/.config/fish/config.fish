@@ -6,9 +6,21 @@ eval /home/alux/anaconda3/bin/conda "shell.fish" "hook" $argv | source
 # >>> personal settings >>>
 
 set fish_greeting
-alias enter_build="cd /mnt/InSpace/Systemd/build"
-alias enter_systemd="cd /mnt/InSpace/Systemd"
-alias enter_adb="cd /mnt/InSpace/Systemd/build/android/"
+#set color outputs
+set -xU MANPAGER 'less -R --use-color -Dd+r -Du+b'
+
+set workdir "/home/alux/workbench/"
+set logloc $workdir"System/Logging and Rollback"
+set backloc $workdir"System/Working Backups/"
+set buildbin $workdir"build/bin"
+set playground $workdir"playground"
+
+set config "/home/alux/repos/AluxRepo/Dotfiles/.config/fish/config.fish"
+set qconfig "/home/alux/repos/AluxRepo/Dotfiles/.config/qtile/config.py"
+
+alias enter_build="cd $workdir/build"
+alias enter_systemd="cd $workdir/Systemd"
+alias enter_adb="cd $workdir/build/android/"
 
 alias check="cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor"
 alias apply="sudo cpupower frequency-set -g"
@@ -28,15 +40,6 @@ alias ll="exa -l"
 
 alias jloc='curl https://json.geoiplookup.io/(curl https://ipinfo.io/ip) | jq'
 
-set workdir "/mnt/InSpace/Systemd/"
-set logloc $workdir"Logging and Rollback"
-set backloc $workdir"Working Backups/"
-set buildbin $workdir"build/bin"
-set playground $workdir"Workbench/playground"
-
-set config "/home/alux/AluxRepo/Dotfiles/.config/fish/config.fish"
-set qconfig "/home/alux/AluxRepo/Dotfiles/.config/qtile/config.py"
-
 export SAM_CLI_TELEMETRY=0
 set EDITOR 'vim'
 
@@ -46,7 +49,11 @@ set SPACEFISH_CONDA_SHOW false
 set SPACEFISH_EXIT_CODE_SHOW true
 set SPACEFISH_DIR_TRUNC 2
 set SPACEFISH_USER_SHOW true
+set SPACEFISH_CHAR_SYMBOL »
+set SPACEFISH_EXIT_CODE_SYMBOL 𐩾
 
+
+export PATH="$PATH:/home/alux/.cargo/bin"
 
 function restart_wifi
     wifi off
