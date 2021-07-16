@@ -1,2 +1,2 @@
-0 15 * * 1,3,5 /usr/bin/pacman-mirrors -f >> /mnt/InSpace/Systemd/Logging\ and\ Rollback/paclog.log
+0 15 * * 1,3,5 /usr/bin/pacman-mirrors -f >> /home/alux/workbench/System/Logging\ and\ Rollback/paclog.log
 

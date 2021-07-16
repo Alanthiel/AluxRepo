@@ -55,24 +55,6 @@ set SPACEFISH_EXIT_CODE_SYMBOL 𐩾
 
 export PATH="$PATH:/home/alux/.cargo/bin"
 
-function restart_wifi
-    wifi off
-    wifi on
-end
-
-function update_git
-	set path (pwd)
-	cd ~alux/AluxRepo
-	git add .
-	git commit
-	git push -u origin master
-	cd $path
-end
-
-function set-inpl
-  /home/alux/.config/inpl/set.py $argv
-end
-
 function __fish_command_not_found_handler --on-event fish_command_not_found
     __fish_default_command_not_found_handler $argv[1]
 end
@@ -86,6 +68,3 @@ function unload_droid_audio
 end
 
 # <<< personal settings <<<
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/mnt/InSpace/Systemd/build/google-cloud-sdk/path.fish.inc' ]; . '/mnt/InSpace/Systemd/build/google-cloud-sdk/path.fish.inc'; end
