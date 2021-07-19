@@ -6,27 +6,31 @@ eval /home/alux/anaconda3/bin/conda "shell.fish" "hook" $argv | source
 # >>> personal settings >>>
 
 set fish_greeting
-#set color outputs
-set -xU MANPAGER 'less -R --use-color -Dd+r -Du+b'
+set repoloc "/home/alux/repos/AluxRepo"
 
+# Directories setup
 set workdir "/home/alux/workbench/"
 set logloc $workdir"System/Logging and Rollback"
 set backloc $workdir"System/Working Backups/"
 set buildbin $workdir"build/bin"
 set playground $workdir"playground"
 
+# Quick Config Variables
 set config "/home/alux/repos/AluxRepo/Dotfiles/.config/fish/config.fish"
 set qconfig "/home/alux/repos/AluxRepo/Dotfiles/.config/qtile/config.py"
 
+# Quick Entry Aliases
 alias enter_build="cd $workdir/build"
 alias enter_systemd="cd $workdir/Systemd"
-alias enter_adb="cd $workdir/build/android/"
 
 alias check="cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor"
 alias apply="sudo cpupower frequency-set -g"
 
+# External Command Aliases
 alias reset_mps='rm ~/.config/mps-youtube/cache_py*'
 alias load_droid_audio="pacmd load-module module-alsa-source device=hw:0,1,0"
+
+# Command Replacements / Flag setups
 alias ping="ping -c 5 "
 alias ..="cd .."
 alias grep="grep --color=always"
@@ -37,15 +41,18 @@ alias tree="exa --tree --icons"
 alias ls="exa"
 alias la="exa -la"
 alias ll="exa -l"
+set -xU MANPAGER 'less -R --use-color -Dd+r -Du+b'
 
+# Aliases Commands
 alias jloc='curl https://json.geoiplookup.io/(curl https://ipinfo.io/ip) | jq'
+alias import-docker-scr="source $repoloc/scripts/fish-scr/docker_scr.fish"
 
 export SAM_CLI_TELEMETRY=0
 set EDITOR 'vim'
 
 # >>> promt settings:
 
-set SPACEFISH_CONDA_SHOW false 
+set SPACEFISH_CONDA_SHOW false
 set SPACEFISH_EXIT_CODE_SHOW true
 set SPACEFISH_DIR_TRUNC 2
 set SPACEFISH_USER_SHOW true
