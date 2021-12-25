@@ -47,6 +47,9 @@ set -xU MANPAGER 'less -R --use-color -Dd+r -Du+b'
 alias jloc='curl https://json.geoiplookup.io/(curl https://ipinfo.io/ip) | jq'
 alias import-docker-scr="source $repoloc/scripts/fish-scr/docker_scr.fish"
 
+
+#Application Settings
+export DOCKER_BUILDKIT=1
 export SAM_CLI_TELEMETRY=0
 set EDITOR 'vim'
 
@@ -59,8 +62,11 @@ set SPACEFISH_USER_SHOW true
 set SPACEFISH_CHAR_SYMBOL »
 set SPACEFISH_EXIT_CODE_SYMBOL 𐩾
 
-
 export PATH="$PATH:/home/alux/.cargo/bin"
+
+function enter_proj
+	cd /home/alux/workbench/Projects/$argv
+end
 
 function __fish_command_not_found_handler --on-event fish_command_not_found
     __fish_default_command_not_found_handler $argv[1]

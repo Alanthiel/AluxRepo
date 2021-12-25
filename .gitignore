@@ -2,3 +2,4 @@
 /.gitignore
 /Dotfiles/.config/qtile/__pycache__/**
 /Dotfiles/.config/qtile/nohup.out
+/packages/pip-packages/tempdump.txt
