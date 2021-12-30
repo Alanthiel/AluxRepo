@@ -1,26 +1,36 @@
-# Configuration for Alacritty, the GPU enhanced terminal emulator.
-
-# Any items in the `env` entry below will be added as
-# environment variables. Some entries may override variables
-# set by alacritty itself.
-env:
-  # TERM variable
-  #
-  # This value is used to set the `$TERM` environment variable for
-  # each instance of Alacritty. If it is not present, alacritty will
-  # check the local terminfo database and use `alacritty` if it is
-  # available, otherwise `xterm-256color` is used.
-  TERM: xterm-256color
-
+items:
+  - colors:
+      name: Grayscale (light)
+      author: Chris Kempson
+      primary:
+        background: "#f7f7f7"
+        foreground: "#464646"
+      cursor:
+        text: "#f7f7f7"
+        cursor: "#464646"
+      normal:
+        black: "#101010"
+        red: "#7c7c7c"
+        green: "#8e8e8e"
+        yellow: "#a0a0a0"
+        blue: "#686868"
+        magenta: "#747474"
+        cyan: "#868686"
+        white: "#b9b9b9"
+      bright:
+        black: "#525252"
+        red: "#7c7c7c"
+        green: "#8e8e8e"
+        yellow: "#a0a0a0"
+        blue: "#686868"
+        magenta: "#747474"
+        cyan: "#868686"
+        white: "#f7f7f7"
+  - theme: Grayscale.lightored.
 window:
-  # Window dimensions (changes require restart)
-  #
-  # Specified in number of columns/lines, not pixels.
-  # If both are `0`, this setting is ignored.
   #dimensions:
   #  columns: 0
   #  lines: 0
-
   # Window position (changes require restart)
   #
   # Specified in number of pixels.
@@ -28,7 +38,6 @@ window:
   #position:
   #  x: 0
   #  y: 0
-
   # Window padding (changes require restart)
   #
   # Blank space added around the window in pixels. This padding is scaled
@@ -39,7 +48,6 @@ window:
 
   # Spread additional padding evenly around the terminal content.
   #dynamic_padding: false
-
   # Window decorations
   #
   # Values for `decorations`:
@@ -50,7 +58,6 @@ window:
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background, but no title bar buttons
   #decorations: full
-
   # Startup Mode (changes require restart)
   #
   # Values for `startup_mode`:
@@ -61,7 +68,6 @@ window:
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
   #startup_mode: Windowed
-
   # Window title
   title: Alacritty
 
@@ -71,22 +77,18 @@ window:
     instance: Alacritty
     # General application class
     general: Alacritty
-
   # GTK theme variant (Linux/BSD only)
   #
   # Override the variant of the GTK theme. Commonly supported values are `dark` and `light`.
   # Set this to `None` to use the default theme variant.
   #gtk_theme_variant: None
-
 scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
   history: 5000
-
   # Number of lines the viewport will move for every line scrolled when
   # scrollback is enabled (history > 0).
   #multiplier: 3
-
   # Scroll to the bottom when new text is written to the terminal.
   #auto_scroll: false
 
@@ -98,7 +100,6 @@ scrolling:
 # To prevent unexpected behavior in these applications, it's also required to
 # change the `it` value in terminfo when altering this setting.
 #tabspaces: 8
-
 # Font configuration
 font:
   # Normal (roman) font face
@@ -187,14 +188,12 @@ font:
   offset:
     x: 1
     y: 1
-
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the right,
   # increasing `y` moves the glyph upwards.
   #glyph_offset:
   #  x: 0
   #  y: 0
-
   # Thin stroke font rendering (macOS only)
   #
   # Thin strokes are suitable for retina displays, but for non-retina screens
@@ -210,72 +209,30 @@ font:
   # This is a global setting and will require a log out or restart to take
   # effect.
   #use_thin_strokes: true
-
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: true
-
 # Colors (Nightfly)
-colors:
-   # Default colors
-  primary:
-     background: '#0a0f12'
-     foreground: '#acb4c2'
-
-  cursor:
-    text: '#fafafa'
-    cursor: '#9ca1aa'
-
-  selection:
-    text: '#080808'
-    background: '#b2ceee'
-
-   # Normal colors
-  normal:
-    black:   '#1d3b53'
-    red:     '#fc514e'
-    green:   '#a1cd5e'
-    yellow:  '#e3d18a'
-    blue:    '#82aaff'
-    magenta: '#c792ea'
-    cyan:    '#7fdbca'
-    white:   '#a1aab8'
-
-   # Bright colors
-  bright:
-    black:   '#7c8f8f'
-    red:     '#ff5874'
-    green:   '#21c7a8'
-    yellow:  '#ecc48d'
-    blue:    '#82aaff'
-    magenta: '#ae81ff'
-    cyan:    '#7fdbca'
-    white:   '#d6deeb'
-  # Dim colors
-  #
-  # If the dim colors are not set, they will be calculated automatically based
-  # on the `normal` colors.
-  #dim:
-  #  black:   '0x000000'
-  #  red:     '0x8c3336'
-  #  green:   '0x7a8530'
-  #  yellow:  '0x97822e'
-  #  blue:    '0x506d8f'
-  #  magenta: '0x80638e'
-  #  cyan:    '0x497e7a'
-  #  white:   '0x9a9a9a'
-
-  # Indexed Colors
-  #
-  # The indexed colors include all colors from 16 to 256.
-  # When these are not set, they're filled with sensible defaults.
-  #
-  # Example:
-  #   `- { index: 16, color: '0xff00ff' }`
-  #
-  #indexed_colors: []
-
 # Visual Bell
-#
+
+colors:
+
+  primary:
+    background: '0x201d2a'
+    foreground: '0x9992b0'
+  cursor:
+    text: '0x201d2a'
+    cursor: '0xb042ff'
+  normal:
+    black:   '0x201d2a'
+    red:     '0x9375f5'
+    green:   '0xdba8ff'
+    yellow:  '0xecd1ff'
+    blue:    '0xa286fd'
+    magenta: '0xca80ff'
+    cyan:    '0xb5a0fe'
+    white:   '0x9992b0'
+
+      #
 # Any time the BEL code is received, Alacritty "rings" the visual bell. Once
 # rung, the terminal background will be set to white and transition back to the
 # default background color. You can control the rate of this transition by
@@ -299,23 +256,18 @@ colors:
 #  animation: EaseOutExpo
 #  duration: 0
 #  color: '0xffffff'
-
 # Background opacity
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
 background_opacity: 0.95
 # background_opacity: 0.95
-
 #selection:
-  #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
-
-  # When set to `true`, selected text will be copied to the primary clipboard.
-  #save_to_clipboard: false
-
+#semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+# When set to `true`, selected text will be copied to the primary clipboard.
+#save_to_clipboard: false
 # Allow terminal applications to change Alacritty's window title.
 #dynamic_title: true
-
 cursor:
   # Cursor style
   #
@@ -324,14 +276,12 @@ cursor:
   #   - _ Underline
   #   - | Beam
   style: Underline
-
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
   #unfocused_hollow: true
 
 # Live config reload (changes require restart)
 #live_config_reload: true
-
 # Shell
 #
 # You can set `shell.program` to the path of your favorite shell, e.g. `/bin/fish`.
@@ -343,35 +293,29 @@ cursor:
 #   - (Windows) powershell
 shell:
   program: /bin/fish
-#   args:
-#     - --login
-
-# Startup directory
-#
-# Directory the shell is started in. If this is unset, or `None`, the working
-# directory of the parent process will be used.
-#working_directory: None
-
-# WinPTY backend (Windows only)
-#
-# Alacritty defaults to using the newer ConPTY backend if it is available,
-# since it resolves a lot of bugs and is quite a bit faster. If it is not
-# available, the the WinPTY backend will be used instead.
-#
-# Setting this option to `true` makes Alacritty use the legacy WinPTY backend,
-# even if the ConPTY backend is available.
-#winpty_backend: false
-
-# Send ESC (\x1b) before characters when alt is pressed.
-#alt_send_esc: true
-
-#debug:
+  #   args:
+  #     - --login
+  # Startup directory
+  #
+  # Directory the shell is started in. If this is unset, or `None`, the working
+  # directory of the parent process will be used.
+  #working_directory: None
+  # WinPTY backend (Windows only)
+  #
+  # Alacritty defaults to using the newer ConPTY backend if it is available,
+  # since it resolves a lot of bugs and is quite a bit faster. If it is not
+  # available, the the WinPTY backend will be used instead.
+  #
+  # Setting this option to `true` makes Alacritty use the legacy WinPTY backend,
+  # even if the ConPTY backend is available.
+  #winpty_backend: false
+  # Send ESC (\x1b) before characters when alt is pressed.
+  #alt_send_esc: true
+  #debug:
   # Display the time it takes to redraw each frame.
   #render_timer: false
-
   # Keep the log file after quitting Alacritty.
   #persistent_logging: false
-
   # Log level
   #
   # Values for `log_level`:
@@ -382,14 +326,11 @@ shell:
   #   - Debug
   #   - Trace
   #log_level: Warn
-
   # Print all received window events.
   #print_events: false
-
   # Record all characters and escape sequences as test data.
   #ref_test: false
-
-#mouse:
+  #mouse:
   # Click settings
   #
   # The `double_click` and `triple_click` settings control the time
@@ -397,31 +338,28 @@ shell:
   # or triple click.
   #double_click: { threshold: 300 }
   #triple_click: { threshold: 300 }
-
   # If this is `true`, the cursor is temporarily hidden when typing.
   #hide_when_typing: false
-
   #url:
-    # URL launcher
-    #
-    # This program is executed when clicking on a text which is recognized as a URL.
-    # The URL is always added to the command as the last parameter.
-    #
-    # When set to `None`, URL launching will be disabled completely.
-    #
-    # Default:
-    #   - (macOS) open
-    #   - (Linux/BSD) xdg-open
-    #   - (Windows) explorer
-    #launcher:
-    #  program: xdg-open
-    #  args: []
-
-    # URL modifiers
-    #
-    # These are the modifiers that need to be held down for opening URLs when clicking
-    # on them. The available modifiers are documented in the key binding section.
-    #modifiers: None
+  # URL launcher
+  #
+  # This program is executed when clicking on a text which is recognized as a URL.
+  # The URL is always added to the command as the last parameter.
+  #
+  # When set to `None`, URL launching will be disabled completely.
+  #
+  # Default:
+  #   - (macOS) open
+  #   - (Linux/BSD) xdg-open
+  #   - (Windows) explorer
+  #launcher:
+  #  program: xdg-open
+  #  args: []
+  # URL modifiers
+  #
+  # These are the modifiers that need to be held down for opening URLs when clicking
+  # on them. The available modifiers are documented in the key binding section.
+  #modifiers: None
 
 # Mouse bindings
 #
@@ -444,7 +382,6 @@ shell:
 # - `mods` (see key bindings)
 #mouse_bindings:
 #  - { mouse: Middle, action: PasteSelection }
-
 # Key bindings
 #
 # Key bindings are specified as a list of objects. For example, this is the
@@ -546,22 +483,51 @@ shell:
 # be mapped to the `ReceiveChar` action. Alternatively, you can use `None` for
 # a no-op if you do not wish to receive input characters for that binding.
 key_bindings:
-    # (Windows, Linux, and BSD only)
-  - { key: V,               mods: Control|Shift, action: Paste            }
-  - { key: C,               mods: Control|Shift, action: Copy             }
-  - { key: Insert,          mods: Shift,         action: PasteSelection   }
-  - { key: Key0,            mods: Control,       action: ResetFontSize    }
-  - { key: Equals,          mods: Control,       action: IncreaseFontSize }
-  - { key: NumpadAdd,       mods: Control,       action: IncreaseFontSize }
-  - { key: NumpadSubtract,  mods: Control,       action: DecreaseFontSize }
-  - { key: Minus,           mods: Control,       action: DecreaseFontSize }
+  # (Windows, Linux, and BSD only)
+  - { key: V, mods: Control|Shift, action: Paste }
+  - { key: C, mods: Control|Shift, action: Copy }
+  - { key: Insert, mods: Shift, action: PasteSelection }
+  - { key: Key0, mods: Control, action: ResetFontSize }
+  - { key: Equals, mods: Control, action: IncreaseFontSize }
+  - {
+      key: NumpadAdd,
+      mods: Control,
+      action: IncreaseFontSize
+    }
+  - {
+      key: NumpadSubtract,
+      mods: Control,
+      action: DecreaseFontSize
+    }
+  - { key: Minus, mods: Control, action: DecreaseFontSize }
 
-  - { key: Paste,                    action: Paste                            }
-  - { key: Copy,                     action: Copy                             }
-  - { key: L,         mods: Control, action: ClearLogNotice                   }
-  - { key: L,         mods: Control, chars: "\x0c"                            }
-  - { key: PageUp,    mods: Shift,   action: ScrollPageUp,   mode: ~Alt       }
-  - { key: PageDown,  mods: Shift,   action: ScrollPageDown, mode: ~Alt       }
-  - { key: Home,      mods: Shift,   action: ScrollToTop,    mode: ~Alt       }
-  - { key: End,       mods: Shift,   action: ScrollToBottom, mode: ~Alt       }
+  - { key: Paste, action: Paste }
+  - { key: Copy, action: Copy }
+  - { key: L, mods: Control, action: ClearLogNotice }
+  - { key: L, mods: Control, chars: "\f" }
+  - {
+      key: PageUp,
+      mods: Shift,
+      action: ScrollPageUp,
+      mode: ~Alt
+    }
+  - {
+      key: PageDown,
+      mods: Shift,
+      action: ScrollPageDown,
+      mode: ~Alt
+    }
+  - {
+      key: Home,
+      mods: Shift,
+      action: ScrollToTop,
+      mode: ~Alt
+    }
+  - {
+      key: End,
+      mods: Shift,
+      action: ScrollToBottom,
+      mode: ~Alt
+    }
 \n\nshell:\n program: /bin/fish\n args:\n - --login\n
+theme: Muzieca pastel white

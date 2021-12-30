@@ -51,10 +51,12 @@ syntax on
 set nu
 set hlsearch
 
-colorscheme koehler
+colorscheme darkblue
 
 nnoremap <silent> <expr> <C-N> g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(expand('%')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>"
 
+command Spellcheck set spell spelllang=en_us
+command Indentfold set foldmethod=indent
 
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 command Nerdtree NERDTree
