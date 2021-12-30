@@ -58,6 +58,8 @@ nnoremap <silent> <expr> <C-N> g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : buf
 command Spellcheck set spell spelllang=en_us
 command Indentfold set foldmethod=indent
 
+set tabstop=2
+
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 command Nerdtree NERDTree
 
