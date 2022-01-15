@@ -213,26 +213,33 @@ font:
 #draw_bold_text_with_bright_colors: true
 # Colors (Nightfly)
 # Visual Bell
-
 colors:
-
+  # Default colors
   primary:
-    background: '0x201d2a'
-    foreground: '0x9992b0'
-  cursor:
-    text: '0x201d2a'
-    cursor: '0xb042ff'
-  normal:
-    black:   '0x201d2a'
-    red:     '0x9375f5'
-    green:   '0xdba8ff'
-    yellow:  '0xecd1ff'
-    blue:    '0xa286fd'
-    magenta: '0xca80ff'
-    cyan:    '0xb5a0fe'
-    white:   '0x9992b0'
+    background: '#0A0E14'
+    foreground: '#B3B1AD'
 
-      #
+  # Normal colors
+  normal:
+    black: '#01060E'
+    red: '#EA6C73'
+    green: '#91B362'
+    yellow: '#F9AF4F'
+    blue: '#53BDFA'
+    magenta: '#FAE994'
+    cyan: '#90E1C6'
+    white: '#C7C7C7'
+
+  # Bright colors
+  bright:
+    black: '#686868'
+    red: '#F07178'
+    green: '#C2D94C'
+    yellow: '#FFB454'
+    blue: '#59C2FF'
+    magenta: '#FFEE99'
+    cyan: '#95E6CB'
+    white: '#FFFFFF'
 # Any time the BEL code is received, Alacritty "rings" the visual bell. Once
 # rung, the terminal background will be set to white and transition back to the
 # default background color. You can control the rate of this transition by
@@ -530,4 +537,4 @@ key_bindings:
       mode: ~Alt
     }
 \n\nshell:\n program: /bin/fish\n args:\n - --login\n
-theme: Muzieca pastel white
+theme: Ayu-Dark
