@@ -65,7 +65,7 @@ set SPACEFISH_USER_SHOW true
 set SPACEFISH_CHAR_SYMBOL »
 set SPACEFISH_EXIT_CODE_SYMBOL 𐩾
 
-export PATH="$PATH:/home/alux/.cargo/bin"
+export PATH="$PATH:$HOME/.cargo/bin:$HOME/.local/symlinks"
 
 function macrofile
 	source ~/resources/macros/$argv
